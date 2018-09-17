@@ -44,18 +44,18 @@ $( document ).ready(function() {
 						}
 					}
 					if (!found) {
-						checkResultText = checkResultText + "<font color='red'>" + FixedInVersion + "</font>, ";
+						checkResultText = checkResultText + "<span class='c20'>" + FixedInVersion + "&nbsp;" + "</span>, ";
 					}
 					else
 					{
-						checkResultText = checkResultText + FixedInVersion + ", ";
+						checkResultText = checkResultText + FixedInVersion + "&nbsp;" + ", ";
 					}
 				});
 			}
 			else
 			{
 				FixedInVersionArray.forEach(function(FixedInVersion) {
-					checkResultText = checkResultText + "<font color='red'>" + FixedInVersion + "</font>, ";
+					checkResultText = checkResultText + "<span class='c20'>" + FixedInVersion  + "&nbsp;" + "</span>, ";
 				});
 			}
 
