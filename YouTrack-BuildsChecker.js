@@ -20,19 +20,21 @@ $( document ).ready(function() {
 				//compare Fix and Verify
 				var BreakException = {};
 				FixedInVersionArray.forEach(function(FixedInVersion) {
+					FixedInVersionNumbersArray = FixedInVersion.split(" ")[1].split(".");
 					found = false;
 					if (VerifiedInVersionArray.indexOf(FixedInVersion) > -1){
 						found = true;
 					}
 					else{
 						try {
-							VerifiedInVersionArray.forEach(function(VerifiedInVersion) {	
-								if(VerifiedInVersion.substr(0, VerifiedInVersion.length - 4) == FixedInVersion.substr(0, FixedInVersion.length - 4)){
-									if(parseInt(VerifiedInVersion.substr(VerifiedInVersion.length - 3, 1)) > parseInt(FixedInVersion.substr(FixedInVersion.length - 3, 1))){
+							VerifiedInVersionArray.forEach(function(VerifiedInVersion) {
+								VerifiedInVersion = VerifiedInVersion.split(" ")[1].split(".");
+								if((parseInt(VerifiedInVersion[0]) == parseInt(FixedInVersionNumbersArray[0])) && (parseInt(VerifiedInVersion[1]) == parseInt(FixedInVersionNumbersArray[1]))){
+									if(parseInt(VerifiedInVersion[2]) > parseInt(FixedInVersionNumbersArray[2])){
 										found = true;
 										throw BreakException;
 									}
-									else if((parseInt(VerifiedInVersion.substr(VerifiedInVersion.length - 3, 1)) == parseInt(FixedInVersion.substr(FixedInVersion.length - 3, 1))) && (parseInt(VerifiedInVersion.substr(VerifiedInVersion.length - 1, 1)) >= parseInt(FixedInVersion.substr(FixedInVersion.length - 1, 1)))) {
+									else if((parseInt(VerifiedInVersion[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersion[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
 										found = true;
 										throw BreakException;
 									}	
