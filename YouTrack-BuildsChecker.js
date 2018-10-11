@@ -20,7 +20,9 @@ $( document ).ready(function() {
 				//compare Fix and Verify
 				var BreakException = {};
 				FixedInVersionArray.forEach(function(FixedInVersion) {
-					FixedInVersionNumbersArray = FixedInVersion.split(" ")[1].split(".");
+					FixedInVersionSpitted = FixedInVersion.split(" ");
+					FixedInVersionDistribution = FixedInVersionSpitted[0];
+					FixedInVersionNumbersArray = FixedInVersionSpitted[1].split(".");
 					found = false;
 					if (VerifiedInVersionArray.indexOf(FixedInVersion) > -1){
 						found = true;
@@ -28,16 +30,21 @@ $( document ).ready(function() {
 					else{
 						try {
 							VerifiedInVersionArray.forEach(function(VerifiedInVersion) {
-								VerifiedInVersion = VerifiedInVersion.split(" ")[1].split(".");
-								if((parseInt(VerifiedInVersion[0]) == parseInt(FixedInVersionNumbersArray[0])) && (parseInt(VerifiedInVersion[1]) == parseInt(FixedInVersionNumbersArray[1]))){
-									if(parseInt(VerifiedInVersion[2]) > parseInt(FixedInVersionNumbersArray[2])){
-										found = true;
-										throw BreakException;
+								VerifiedInVersionSpitted = VerifiedInVersion.split(" ");
+								VerifiedInVersionDistribution = VerifiedInVersionSpitted[0];
+								if (FixedInVersionDistribution == VerifiedInVersionDistribution)
+								{
+									VerifiedInVersionNumbersArray = VerifiedInVersionSpitted[1].split(".");
+									if ((parseInt(VerifiedInVersionNumbersArray[0]) == parseInt(FixedInVersionNumbersArray[0])) && (parseInt(VerifiedInVersionNumbersArray[1]) == parseInt(FixedInVersionNumbersArray[1]))){
+										if(parseInt(VerifiedInVersionNumbersArray[2]) > parseInt(FixedInVersionNumbersArray[2])){
+											found = true;
+											throw BreakException;
+										}
+										else if((parseInt(VerifiedInVersionNumbersArray[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersionNumbersArray[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
+											found = true;
+											throw BreakException;
+										}	
 									}
-									else if((parseInt(VerifiedInVersion[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersion[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
-										found = true;
-										throw BreakException;
-									}	
 								}
 							});
 						} 

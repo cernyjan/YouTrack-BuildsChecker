@@ -10,6 +10,9 @@ After add-on:
 ![after](After.png)
 
 ## Release Notes
+### v1.0.3.0
+* fixed bug: Does not detect builds from different distribution
+
 ### v1.0.2.0
 * fixed bug: Does not working with two and more places for a number
 
@@ -24,10 +27,10 @@ After add-on:
 * bumped version 
 
 ## Add-on for FireFox
-[YouTrack Builds Checker v1.0.2.0](https://addons.mozilla.org/cs/firefox/addon/youtrack-builds-checker/)
+[YouTrack Builds Checker v1.0.3.0](https://addons.mozilla.org/cs/firefox/addon/youtrack-builds-checker/)
 
 ## Add-on for Chrome
-* download .xpi file from [YouTrack Builds Checker v1.0.2.0](https://github.com/cernyjan/YouTrack-BuildsChecker/releases/tag/v1.0.2.0)
+* download .xpi file from [YouTrack Builds Checker v1.0.3.0](https://github.com/cernyjan/YouTrack-BuildsChecker/releases/tag/v1.0.3.0)
 * extract it on the file system
 * open Extensions page in browser
 * click the “Developer mode” checkbox to activate it
