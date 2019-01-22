@@ -2,7 +2,7 @@
   "description": "Checking untested versions",
   "manifest_version": 2,
   "name": "YouTrack Builds Checker",
-  "version": "1.0.4.0",
+  "version": "1.0.5.0",
   "homepage_url": "https://github.com/cernyjan/YouTrack-BuildsChecker",
   "icons": {
     "48": "icons/checker-48.png"

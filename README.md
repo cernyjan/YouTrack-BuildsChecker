@@ -1,7 +1,7 @@
 # YouTrack Builds Checker
 This add-on injects JavaScript into YouTrack web pages for checking untested versions. 
 
-Compatible with YouTrack *2018.3 Build 46358* and lower.
+Compatible with YouTrack *2018.4 Build 48733* and lower.
 
 Before add-on: 
 ![before](Before.png)
@@ -10,6 +10,9 @@ After add-on:
 ![after](After.png)
 
 ## Release Notes
+### v1.0.5.0
+* fixed bug: Stopped working with YouTrack 2018.4
+
 ### v1.0.4.0
 * fixed bug: Does not work with YouTrack 2018.3 Build 46358
 

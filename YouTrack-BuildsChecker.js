@@ -6,7 +6,10 @@ $( document ).ready(function() {
 	}
 
 	function checkBuilds() {
-		if ($('a:contains("YouTrack 2018.3")').length == 1)
+		var year = 2018;
+		var version = 3;
+		var ytVersion = $('a:contains("YouTrack ")').text().split(" ")[1].split(".");
+		if ((parseInt(ytVersion[0])>= year ) && (parseInt(ytVersion[1])>= version ))
 		{
 			//after redesign
 			FixedInVersionYt =  $('span:contains("Fixed in Version")').parent().next('td').children("span").find("span[data-user-id]");
