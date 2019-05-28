@@ -9,7 +9,7 @@ $( document ).ready(function() {
 		var year = 2018;
 		var version = 3;
 		var ytVersion = $('a:contains("YouTrack ")').text().split(" ")[1].split(".");
-		if ((parseInt(ytVersion[0])>= year ) && (parseInt(ytVersion[1])>= version ))
+		if (((parseInt(ytVersion[0]) == year ) && (parseInt(ytVersion[1])>= version )) || ((parseInt(ytVersion[0]) > year )))
 		{
 			//after redesign
 			FixedInVersionYt =  $('span:contains("Fixed in Version")').parent().next('td').children("span").find("span[data-user-id]");

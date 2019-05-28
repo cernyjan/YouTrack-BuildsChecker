@@ -10,6 +10,9 @@ After add-on:
 ![after](After.png)
 
 ## Release Notes
+### v1.0.6.0
+* fixed bug: Stopped working with YouTrack 2019.1
+
 ### v1.0.5.0
 * fixed bug: Stopped working with YouTrack 2018.4
 
@@ -33,10 +36,10 @@ After add-on:
 * bumped version 
 
 ## Add-on for FireFox
-[YouTrack Builds Checker v1.0.5.0](https://addons.mozilla.org/cs/firefox/addon/youtrack-builds-checker/)
+[YouTrack Builds Checker v1.0.6.0](https://addons.mozilla.org/cs/firefox/addon/youtrack-builds-checker/)
 
 ## Add-on for Chrome
-* download .xpi file from [YouTrack Builds Checker v1.0.5.0](https://github.com/cernyjan/YouTrack-BuildsChecker/releases/tag/v1.0.5.0)
+* download .xpi file from [YouTrack Builds Checker v1.0.6.0](https://github.com/cernyjan/YouTrack-BuildsChecker/releases/tag/v1.0.6.0)
 * extract it on the file system
 * open Extensions page in browser
 * click the “Developer mode” checkbox to activate it
