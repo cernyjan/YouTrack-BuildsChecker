@@ -15,6 +15,9 @@ $( document ).ready(function() {
 			VerifiedInVersionArray.push($(this).text());
 		});
 
+		var distributions = ["OM5-Cloud", "OMS-500", "OM5-Plug-in"];
+		var version = ["8", "5"]
+
 		FixedInVersionYt.each(function(){
 			var FixedInVersion = $(this).text()
 			if (VerifiedInVersionArray[0] != "No verified in version") {
@@ -35,15 +38,45 @@ $( document ).ready(function() {
 							if (FixedInVersionDistribution == VerifiedInVersionDistribution)
 							{
 								VerifiedInVersionNumbersArray = VerifiedInVersionSpitted[1].split(".");
-								if ((parseInt(VerifiedInVersionNumbersArray[0]) == parseInt(FixedInVersionNumbersArray[0])) && (parseInt(VerifiedInVersionNumbersArray[1]) == parseInt(FixedInVersionNumbersArray[1]))){
-									if(parseInt(VerifiedInVersionNumbersArray[2]) > parseInt(FixedInVersionNumbersArray[2])){
-										found = true;
-										throw BreakException;
+								if (distributions.includes(FixedInVersionDistribution) == false)
+								{
+									if ((parseInt(VerifiedInVersionNumbersArray[0]) == parseInt(FixedInVersionNumbersArray[0])) && (parseInt(VerifiedInVersionNumbersArray[1]) == parseInt(FixedInVersionNumbersArray[1]))){
+										if(parseInt(VerifiedInVersionNumbersArray[2]) > parseInt(FixedInVersionNumbersArray[2])){
+											found = true;
+											throw BreakException;
+										}
+										else if((parseInt(VerifiedInVersionNumbersArray[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersionNumbersArray[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
+											found = true;
+											throw BreakException;
+										}	
 									}
-									else if((parseInt(VerifiedInVersionNumbersArray[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersionNumbersArray[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
-										found = true;
-										throw BreakException;
-									}	
+								}
+								else
+								{
+									if ((parseInt(VerifiedInVersionNumbersArray[0]) == parseInt(FixedInVersionNumbersArray[0])) && (parseInt(VerifiedInVersionNumbersArray[1]) == parseInt(FixedInVersionNumbersArray[1]))){
+										if (parseInt(VerifiedInVersionNumbersArray[0]) != parseInt(version[0]) && parseInt(VerifiedInVersionNumbersArray[1]) != parseInt(version[1]))
+										{
+											if(parseInt(VerifiedInVersionNumbersArray[2]) > parseInt(FixedInVersionNumbersArray[2])){
+												found = true;
+												throw BreakException;
+											}
+											else if((parseInt(VerifiedInVersionNumbersArray[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersionNumbersArray[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
+												found = true;
+												throw BreakException;
+											}
+										}
+										else
+										{
+											if((parseInt(VerifiedInVersionNumbersArray[2]) > parseInt(FixedInVersionNumbersArray[2])) && (parseInt(FixedInVersionNumbersArray[2]) >= 1 && parseInt(FixedInVersionNumbersArray[2]) < 200) && (parseInt(VerifiedInVersionNumbersArray[2]) >= 1 && parseInt(VerifiedInVersionNumbersArray[2]) < 200) && (parseInt(FixedInVersionNumbersArray[2]) >= 200 && parseInt(FixedInVersionNumbersArray[2]) < 300) && (parseInt(VerifiedInVersionNumbersArray[2]) >= 200 && parseInt(VerifiedInVersionNumbersArray[2]) < 300) && (parseInt(FixedInVersionNumbersArray[2]) >= 301 && parseInt(VerifiedInVersionNumbersArray[2]) >= 301)){
+												found = true;
+												throw BreakException;
+											}
+											else if((parseInt(VerifiedInVersionNumbersArray[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersionNumbersArray[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
+												found = true;
+												throw BreakException;
+											}
+										}	
+									}
 								}
 							}
 						});
