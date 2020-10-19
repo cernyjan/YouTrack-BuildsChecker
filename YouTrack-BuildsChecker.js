@@ -26,6 +26,10 @@ $( document ).ready(function() {
 				FixedInVersionSpitted = FixedInVersion.split(" ");
 				FixedInVersionDistribution = FixedInVersionSpitted[0];
 				FixedInVersionNumbersArray = FixedInVersionSpitted[1].split(".");
+				FIVMain = parseInt(FixedInVersionNumbersArray[0])
+				FIVMinor = parseInt(FixedInVersionNumbersArray[1])
+				FIVBuild = parseInt(FixedInVersionNumbersArray[2])
+				FIVRevision = parseInt(FixedInVersionNumbersArray[3])
 				found = false;
 				if (VerifiedInVersionArray.indexOf(FixedInVersion) > -1){
 					found = true;
@@ -36,16 +40,20 @@ $( document ).ready(function() {
 							VerifiedInVersionSpitted = VerifiedInVersion.split(" ");
 							VerifiedInVersionDistribution = VerifiedInVersionSpitted[0];
 							if (FixedInVersionDistribution == VerifiedInVersionDistribution)
-							{
+							{								
 								VerifiedInVersionNumbersArray = VerifiedInVersionSpitted[1].split(".");
+								VIVMain = parseInt(VerifiedInVersionNumbersArray[0])
+								VIVMinor = parseInt(VerifiedInVersionNumbersArray[1])
+								VIVBuild = parseInt(VerifiedInVersionNumbersArray[2])
+								VIVRevision = parseInt(VerifiedInVersionNumbersArray[3])
 								if (distributions.includes(FixedInVersionDistribution) == false)
 								{
-									if ((parseInt(VerifiedInVersionNumbersArray[0]) == parseInt(FixedInVersionNumbersArray[0])) && (parseInt(VerifiedInVersionNumbersArray[1]) == parseInt(FixedInVersionNumbersArray[1]))){
-										if(parseInt(VerifiedInVersionNumbersArray[2]) > parseInt(FixedInVersionNumbersArray[2])){
+									if (VIVMain == FIVMain && VIVMinor == FIVMinor){
+										if(VIVBuild > FIVBuild){
 											found = true;
 											throw BreakException;
 										}
-										else if((parseInt(VerifiedInVersionNumbersArray[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersionNumbersArray[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
+										else if(VIVBuild == FIVBuild && VIVRevision >= FIVRevision) {
 											found = true;
 											throw BreakException;
 										}	
@@ -53,25 +61,33 @@ $( document ).ready(function() {
 								}
 								else
 								{
-									if ((parseInt(VerifiedInVersionNumbersArray[0]) == parseInt(FixedInVersionNumbersArray[0])) && (parseInt(VerifiedInVersionNumbersArray[1]) == parseInt(FixedInVersionNumbersArray[1]))){
-										if (parseInt(VerifiedInVersionNumbersArray[0]) != parseInt(version[0]) && parseInt(VerifiedInVersionNumbersArray[1]) != parseInt(version[1]))
+									if (VIVMain == FIVMain && VIVMinor == FIVMinor){
+										if (VIVMain != parseInt(version[0]) && VIVMinor != parseInt(version[1]))
 										{
-											if(parseInt(VerifiedInVersionNumbersArray[2]) > parseInt(FixedInVersionNumbersArray[2])){
+											if(VIVBuild > FIVBuild){
 												found = true;
 												throw BreakException;
 											}
-											else if((parseInt(VerifiedInVersionNumbersArray[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersionNumbersArray[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
+											else if(VIVBuild == FIVBuild && VIVRevision >= FIVRevision) {
 												found = true;
 												throw BreakException;
 											}
 										}
 										else
 										{
-											if((parseInt(VerifiedInVersionNumbersArray[2]) > parseInt(FixedInVersionNumbersArray[2])) && (parseInt(FixedInVersionNumbersArray[2]) >= 1 && parseInt(FixedInVersionNumbersArray[2]) < 200) && (parseInt(VerifiedInVersionNumbersArray[2]) >= 1 && parseInt(VerifiedInVersionNumbersArray[2]) < 200) && (parseInt(FixedInVersionNumbersArray[2]) >= 200 && parseInt(FixedInVersionNumbersArray[2]) < 300) && (parseInt(VerifiedInVersionNumbersArray[2]) >= 200 && parseInt(VerifiedInVersionNumbersArray[2]) < 300) && (parseInt(FixedInVersionNumbersArray[2]) >= 301 && parseInt(VerifiedInVersionNumbersArray[2]) >= 301)){
+											if((VIVBuild > FIVBuild) && (FIVBuild < 200 && VIVBuild < 200)){
 												found = true;
 												throw BreakException;
 											}
-											else if((parseInt(VerifiedInVersionNumbersArray[2]) == parseInt(FixedInVersionNumbersArray[2])) && (parseInt(VerifiedInVersionNumbersArray[3]) >= parseInt(FixedInVersionNumbersArray[3]))) {
+											else if((VIVBuild > FIVBuild) && ((FIVBuild < 300 && VIVBuild < 300) && (FIVBuild >= 200 && VIVBuild >= 200))){
+												found = true;
+												throw BreakException;
+											}
+											else if((VIVBuild > FIVBuild) && (FIVBuild > 300 && VIVBuild > 300)){
+												found = true;
+												throw BreakException;
+											}											
+											else if((VIVBuild == FIVBuild && VIVRevision >= FIVRevision)) {
 												found = true;
 												throw BreakException;
 											}
