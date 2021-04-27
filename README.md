@@ -26,7 +26,7 @@ After add-on:
 [YouTrack Builds Checker](https://addons.mozilla.org/cs/firefox/addon/youtrack-builds-checker/)
 
 ## Add-on for Chrome
-* download file[YouTrack Builds Checker](https://github.com/cernyjan/YouTrack-BuildsChecker/releases/)
+* download file [YouTrack Builds Checker](https://github.com/cernyjan/YouTrack-BuildsChecker/releases/)
 * extract it on the file system
 * open Extensions page in browser
 * click the “Developer mode” checkbox to activate it
